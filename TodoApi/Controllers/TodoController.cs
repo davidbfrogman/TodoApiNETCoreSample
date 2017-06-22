@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using TodoApi.Models;
 using Microsoft.EntityFrameworkCore;
 using TodoApi.Interfaces;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -56,7 +57,7 @@ namespace TodoApi.Controllers
             await this._repository.Delete(id);
 
 
-            return new JsonResult("{ deletedId: id}");
+            return new JsonResult(new { deletedId = id, message = "Successfully deleted item" });
         }
     }
 }

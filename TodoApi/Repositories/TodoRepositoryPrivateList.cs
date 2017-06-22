@@ -21,10 +21,10 @@ namespace TodoApi.Repositories
             return new ObjectResult(_todos);
         }
 
-        public Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             _todos.Remove(_todos.Find(td =>td.Id == id));
-            return null;
+            return new ObjectResult(id);
         }
 
         public async Task<IActionResult> DoesTodoAlreadyExist(int id)
